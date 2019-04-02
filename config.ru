@@ -2,6 +2,8 @@ SESSION_SECRET= "9bc133a18d84a1cbfbd020057eb9ac393be5d1543a5fa81a6d9ea6c787041ea
 
 require 'dotenv'
 require './config/environment'
+require_relative 'app/controllers/books_controller'
+require_relative 'app/controllers/users_controller'
 Dotenv.load
 
 
@@ -11,4 +13,6 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use BooksController
+use UsersController
 run ApplicationController
