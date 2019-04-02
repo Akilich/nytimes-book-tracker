@@ -10,7 +10,10 @@ gem 'thin'
 gem 'shotgun'
 gem 'pry'
 gem 'bcrypt'
-gem "tux"
+gem 'tux'
+gem 'rack'
+gem 'session_secret_generator'
+gem 'dotenv'
 
 group :test do
   gem 'rspec'
