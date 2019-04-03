@@ -1,23 +1,20 @@
 <div class="container">
-  <header><img src="images/corneal-small.png" class="img-responsive main-image"></header>
+  <header><img src="images/book.png" class="img-responsive main-image"></header>
   <div class="col-md-8 col-md-offset-2">
-    <h2>Sinatra Template Default Page</h2>
-
+    
     <div class="content">
-      <p>Welcome to the Sinatra Template! If you're seeing this page, then everything is working
-      as expected. To get started, delete this file (<code>app/views/welcome.erb)</code> and begin adding
-      your own actions to <code>application_controller.rb</code>. For more information, see the <a href="https://github.com/thebrianemory/corneal">README</a>.</p>
-      <p> <form action="/login"> <input type="submit" value="Login" /></form> <form action="/signup"> <input type="submit" value="Signup" /></form>
+    <h3>Keep a record on NY Times Bestseller Books</h3>
+      <p>The purpose of this app is to create a NY Times bestseller database that allows 
+      users to create an account, search for books, save them to their account, and mark 
+      whether they have read them. Users can also update the book information in their 
+      account and delete a book from their account. Only users who are signed up have 
+      access to this database and can add, edit, delete books from their account.</p>
     </div>
 
     <div class="sidebar">
-      <h3>Environment</h3>
-      <ul>
-        <li><b>Ruby:</b> <%= RUBY_VERSION %></li>
-        <li><b>Environment:</b> <%= ENV["RACK_ENV"] %></li>
-        <li><b>Server:</b> <%= @env["SERVER_SOFTWARE"] %></li>
-        <li><b>Port:</b> <%= @env["SERVER_PORT"] %></li>
-      </ul>
+      <h3>Login or Create an Account</h3>
+      <p> <form action="/login"> <input type="submit" value="Login" /></form> 
+      <p><form action="/signup"> <input type="submit" value="Signup" /></form>
     </div>
 
   </div>
