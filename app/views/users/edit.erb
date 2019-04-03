@@ -1,15 +1,9 @@
 <h1>Update User Account</h1>
-<form action="/owners/<%=@owner.id%>" method="POST">
+<form action="/userss/<%=@user.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
 <label> Username: </label>
 
-<input="text" name="owner[name]" id="owner_name" value="<%=@owner.name%>">
-
-  <label>and/or, create a new pet:</label>
-  <br>
-  <label>name:</label>
-    <input  type="text" name="pet[name]" id="pet_name"></input>
-  <br>
-  <input type="submit" value="Update Owner">
+<input="text" name="username" id="user_name" value="<%=@username%>">
+  <input type="submit" value="Update My Usename">
 </form>
