@@ -1,0 +1,8 @@
+<body>
+ <%=@username%>, view all your books. 
+
+<%@books.each do |book|%>
+  <p><%=book.title%>,<%=book.author>,<%=book.rank></p>
+  <a href='/books/<%=book.id%>'>/books/<%=book.id%></a>
+<%end%>
+</body>

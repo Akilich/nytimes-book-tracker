@@ -1,7 +1,9 @@
-<h1><%=@user.name%></h1>
-<h4>Books:</h4>
+<h2><%=@user.name%> Book List</h2>
 <ul>
   <%@user.books.each do |pet|%>
   <li><%=book.title%></li>
+  <li><%=book.author%></li>
+  <li><%=book.description%></li>
+  <li><%=book.rank%></li>
   <%end%>
 </ul>
