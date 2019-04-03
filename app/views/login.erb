@@ -1,7 +1,7 @@
-<h1>Log In Below:</h1>
+<center><h1>NY Times Book Tracker Log In</h1>
 <%=@error%>
-<form action="/login" method="post">
+<p><form action="/login" method="post">
   <p>Email: <input type="text" name="email" value="<%=params[:email]%>"/></p>
-  <p>Password: <input type="text" name="password"/></p>
+  <p>Password: <input type="text" name="password_digest"/></p>
   <input type="submit" value="Log In"/>
 </form>
