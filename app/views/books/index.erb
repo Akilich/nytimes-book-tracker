@@ -1,0 +1,9 @@
+<h1> -NY Times Bestseller Hardcover Fiction- </h1>
+
+<body>
+ <%=@books%> 
+
+<%@books.each do |book|%>
+  <p><%=book.title%></p>
+<%end%>
+</body> 

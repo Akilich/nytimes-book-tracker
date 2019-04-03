@@ -1,0 +1,7 @@
+<h1>Log In Below:</h1>
+<%=@error%>
+<form action="/login" method="post">
+  <p>Email: <input type="text" name="email" value="<%=params[:email]%>"/></p>
+  <p>Password: <input type="text" name="password"/></p>
+  <input type="submit" value="Log In"/>
+</form>
