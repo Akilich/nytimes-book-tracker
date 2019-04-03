@@ -1,0 +1,8 @@
+<body>
+ <%=@owners%> 
+
+<%@owners.each do |owner|%>
+  <p><%=owner.name%></p>
+  <a href='/owners/<%=owner.id%>'>/owners/<%=owner.id%></a>
+<%end%>
+</body> 

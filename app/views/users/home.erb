@@ -1,2 +1,21 @@
-"Welcome!"
-<a href="/logout">Log Out</a>
+<!DOCTYPE html>
+<html>
+<head>
+<p><h2>Welcome <%=@username%>,</h2></p>
+<p><center><h3>- NY Times Bestseller Book Dashboard -</h3></center></p>
+</head>
+
+<body>
+<p>
+<center>
+<a href="/user_books/:id" class="button6" style="background-color:#668fff">View Your Books</a>
+<a href="/books/new" class="button6" style="background-color:#668fff">Add Book</a>
+<a href="/books/edit" class="button6" style="background-color:#668fff">Edit Books</a>
+</center>
+
+<p><a href="/logout">Log Out</a></p>
+</body>
+<html>
+
+
+

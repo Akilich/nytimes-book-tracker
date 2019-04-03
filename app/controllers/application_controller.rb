@@ -1,5 +1,5 @@
 require './config/environment'
-require "./app/models/user"
+require './app/models/user'
 
 class ApplicationController < Sinatra::Base
 
@@ -39,7 +39,8 @@ class ApplicationController < Sinatra::Base
 		end
 	end
 
-	get "/users/home" do
+  get "/users/home" do
+      @username = params[:username]
 			erb :'/users/home'
   end
   
