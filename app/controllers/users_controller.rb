@@ -1,16 +1,16 @@
 class UsersController < ApplicationController
     
     get "/users/home" do
-        @username = User.find(params[:username])
+        #@username = User.find(params[:username])
         erb :'/users/home'
     end
     
-    get '/users' do
+    get '/user_books' do
         @users = Users.all
         erb :'/users/index' 
     end
     
-    post '/users' do 
+    post '/user_books' do 
       #binding.pry
       @user = User.create(params[:user])
       if !params["book"]["title"].empty?
@@ -23,21 +23,21 @@ class UsersController < ApplicationController
     
     get '/users/:id/edit' do
         @user = User.find(params[:id])
-        @books = Book.all
         erb :'/users/edit'
     end
     
     get '/users/:id' do 
         @user = User.find(params[:id])
-        @books = Book.all
         erb :'/users/show'
     end
     
     patch '/users/:id' do 
         @user = User.find_by_id(params[:id])
         @username = params[:username]
-        @user.books << Book.create(name: params["book"]["title"])
         @user.save
         redirect "users/#{@user.id}"
     end
 end
+
+
+#@user.books << Book.create(name: params["book"]["title"])

@@ -1,7 +1,15 @@
-<h1><%=@user.name%></h1>
-<h4>Books:</h4>
-<ul>
-  <%@user.books.each do |pet|%>
-  <li><%=book.title%></li>
-  <%end%>
-</ul>
+<head>
+<p><h2>Your Account</h2></p>
+</head>
+
+<body>
+<p>
+<center>
+<a href="/user_books/:id" class="button6" style="background-color:#668fff">View Your Books</a>
+<a href="/users/edit/:id" class="button6" style="background-color:#668fff">Update Account</a>
+<a href="/users/home" class="button6" style="background-color:#668fff">My Dashboard</a>
+</center>
+
+<p><a href="/logout">Log Out</a></p>
+</body>
+<html>

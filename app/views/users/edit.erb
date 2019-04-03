@@ -1,17 +1,10 @@
-<h1>Update User Profile</h1>
+<h1>Update User Account</h1>
 <form action="/owners/<%=@owner.id%>" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
 <label> Username: </label>
 
 <input="text" name="owner[name]" id="owner_name" value="<%=@owner.name%>">
-
-
-<%@pets.each do |pet|%>
-    <input type="checkbox" name="owner[pet_ids][]" id="<%= pet.id%>" value="<%=pet.id%>" <%='checked' if @owner.pets.include?(pet) %>><%=pet.name%></input>
-  <%end%>
-
-  <br>
 
   <label>and/or, create a new pet:</label>
   <br>

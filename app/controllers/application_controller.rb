@@ -15,14 +15,14 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/signup" do
-		erb :'/registrations/signup'
+		erb :'/signup'
   end
   
   post "/signup" do
-		@user = User.new(username: params["username"], email: params["email"], password: params["password"])
+    @user = User.new(username: params["username"], email: params["email"], password: params["password"])
     @user.save
     session[:user_id] = @user.id
-			redirect "/users/home"
+			redirect "/login"
   end
 
   get "/login" do
@@ -30,19 +30,15 @@ class ApplicationController < Sinatra::Base
 	end
 
 	post "/login" do
-    if @user = User.find_by(email: params["email"], password: params["password"])
-      session[:user_id] = @user.id
-			redirect '/users/home'
+    @user = User.find_by(email: params["email"], password: params["password"])
+    if @user && @user.authenticate(params[:password])
+			session[:user_id] = user.id
+		  redirect '/users/home'
 		else
         @error = "Invalid email or password"
         redirect '/login'
 		end
 	end
-
-  get "/users/home" do
-      @username = params[:username]
-			erb :'/users/home'
-  end
   
   get '/logout' do
     session.clear
@@ -58,5 +54,5 @@ class ApplicationController < Sinatra::Base
 		def current_user
 			User.find(session[:user_id])
 		end
-	end
+  end
 end
