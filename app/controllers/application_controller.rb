@@ -1,6 +1,7 @@
 require './config/environment'
 require './app/models/user'
-
+require 'pry'
+#!/usr/bin/ruby
 class ApplicationController < Sinatra::Base
   
   configure do
@@ -19,26 +20,25 @@ class ApplicationController < Sinatra::Base
   end
   
   post "/signup" do
-    @user = User.new(username: params["username"], email: params["email"], password: params["password_digest"])
+    @user = User.new(username: params[:username], email: params[:email], password_digest: params[:password_digest])
     @user.save
     session[:user_id] = @user.id
 			redirect "/login"
   end
 
-  get "/login" do
-		erb :'/login'
-	end
+  get '/sessions/login' do
+    erb :'sessions/login'
+  end
 
-	post "/login" do
-    @user = User.find_by(email: params["email"], password_digest: params["password_digest"])
-    if @user && @user.authenticate(params[:password_digest])
-			session[:user_id] = user.id
-		  redirect '/users/home'
-		else
-        @error = "Invalid email or password"
-        redirect '/login'
-		end
-	end
+  post '/sessions' do
+    if @user = User.find_by(email: params["email"], password_digest: params["password_digest"])
+      session[:user_id] = @user.id
+      redirect '/users/home'
+    else
+      @error="Invalid email or password"
+      redirect '/sessions/login'
+    end
+  end
   
   get '/logout' do
     session.clear

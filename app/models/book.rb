@@ -1,7 +1,7 @@
 require 'json'
 
 class Book < ActiveRecord::Base
-    belong_to :user
+    belongs_to :user
     
     attr_accessor :title, :description, :author, :rank
    

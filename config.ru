@@ -13,6 +13,8 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
+use Rack::Session::Cookie
 use BooksController
 use UsersController
+
 run ApplicationController

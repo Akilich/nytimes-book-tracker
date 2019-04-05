@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     get "/users/home" do
-        #@username = User.find(params[:username])
+        @username = User.find(params[:username])
         erb :'/users/home'
     end
     
