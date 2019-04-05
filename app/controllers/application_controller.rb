@@ -1,15 +1,15 @@
+#!/usr/bin/ruby
+
 require './config/environment'
 require './app/models/user'
 require 'pry'
-require 'sinatra/flash'
-#!/usr/bin/ruby
+
 class ApplicationController < Sinatra::Base
   
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    register Sinatra::Flash
     set :session_secret, ENV['SESSION_SECRET'], :expire_after => 600
   end
 
@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/users/home'
     else
-      flash.now[:failure] = 'Invalid email/password combination'
+      flash.now[:error] = 'Invalid email/password combination'
       redirect '/login' 
     end
     
