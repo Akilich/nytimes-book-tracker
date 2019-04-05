@@ -16,5 +16,4 @@ use Rack::MethodOverride
 use Rack::Session::Cookie
 use BooksController
 use UsersController
-
 run ApplicationController

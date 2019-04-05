@@ -31,19 +31,18 @@ class ApplicationController < Sinatra::Base
 	end
 
   post '/login' do
-    if @user = User.find_by(email: params[:email], password_digest: params[:password_digest])
-      #@user && @user.authenticate(params[:password_digest])
+    @user = User.find_by(username: params[:username], password_digest: params[:password_digest])
+    if @user
+      @user.save
       session[:user_id] = @user.id
-		  redirect '/users/home'
-		else
-    @error = "Invalid email or password. Please try again."
-    redirect '/login'
-		end
+    end
+		redirect '/users/home'
   end
   
   get '/users/home' do
-    if @user = Helpers.current_user(session)
+    #if @user = Helpers.current_user(session)
     erb :'/users/home'
+    #end
   end
   
   get '/logout' do
@@ -51,5 +50,4 @@ class ApplicationController < Sinatra::Base
     redirect '/'
     erb :home
   end
-end
 end

@@ -1,3 +1,2 @@
-class BooksController < ApplicationController
-    
+class BooksController < ApplicationController   
 end
