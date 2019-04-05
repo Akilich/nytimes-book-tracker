@@ -1,10 +1,5 @@
 class UsersController < ApplicationController
 
-    get "/users/home" do
-        @username = User.find(params[:username])
-        erb :'/users/home'
-    end
-    
     get '/user_books' do
         @users = Users.all
         erb :'/users/index' 
@@ -18,8 +13,6 @@ class UsersController < ApplicationController
       end
       redirect "users/#{@user.id}"
     end
-
-    
     
     get '/users/:id/edit' do
         @user = User.find(params[:id])
@@ -38,6 +31,3 @@ class UsersController < ApplicationController
         redirect "users/#{@user.id}"
     end
 end
-
-
-#@user.books << Book.create(name: params["book"]["title"])

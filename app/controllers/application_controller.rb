@@ -11,33 +11,39 @@ class ApplicationController < Sinatra::Base
     set :session_secret, ENV['SESSION_SECRET']
   end
 
-  get "/" do
+  get '/' do
     erb :home
   end
 
-  get "/signup" do
+  get '/signup' do
 		erb :'/signup'
   end
   
-  post "/signup" do
+  post '/signup' do
     @user = User.new(username: params[:username], email: params[:email], password_digest: params[:password_digest])
     @user.save
     session[:user_id] = @user.id
-			redirect "/login"
+		redirect '/login'
   end
 
-  get '/sessions/login' do
-    erb :'sessions/login'
-  end
+  get '/login' do
+		erb :'/login'
+	end
 
-  post '/sessions' do
-    if @user = User.find_by(email: params["email"], password_digest: params["password_digest"])
+  post '/login' do
+    if @user = User.find_by(email: params[:email], password_digest: params[:password_digest])
+      #@user && @user.authenticate(params[:password_digest])
       session[:user_id] = @user.id
-      redirect '/users/home'
-    else
-      @error="Invalid email or password"
-      redirect '/sessions/login'
-    end
+		  redirect '/users/home'
+		else
+    @error = "Invalid email or password. Please try again."
+    redirect '/login'
+		end
+  end
+  
+  get '/users/home' do
+    if @user = Helpers.current_user(session)
+    erb :'/users/home'
   end
   
   get '/logout' do
@@ -45,14 +51,5 @@ class ApplicationController < Sinatra::Base
     redirect '/'
     erb :home
   end
-
-  helpers do
-		def logged_in?
-			!!session[:user_id]
-		end
-
-		def current_user
-			User.find(session[:user_id])
-		end
-  end
+end
 end
