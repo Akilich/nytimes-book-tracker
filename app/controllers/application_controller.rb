@@ -3,6 +3,7 @@
 require './config/environment'
 require './app/models/user'
 require 'pry'
+require './flash.rb'
 
 class ApplicationController < Sinatra::Base
   
@@ -39,7 +40,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = @user.id
       redirect '/users/home'
     else
-      flash.now[:error] = 'Invalid email/password combination'
+      flash.message = 'Invalid email/password combination'
       redirect '/login' 
     end
     
@@ -56,6 +57,10 @@ class ApplicationController < Sinatra::Base
   end
 
   helpers do
+    def flash
+      @flash ||= FlashMessage.new(session)
+    end
+
 		def logged_in?
 			!!session[:user_id]
 		end

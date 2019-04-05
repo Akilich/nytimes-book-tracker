@@ -1,13 +1,8 @@
 <center><h1>NY Times Book Tracker Log In</h1>
-<% flash.keys.each do |type| %>
-  <div data-alert class="flash <%= type %> alert-box radius">
-    <%= flash[type] %>
-    <a href="#" class="close">&times;</a>
-  </div>
-<% end %>
-
+<%= flash.message %>
 <p><form action="/login" method="post">
   <p>Email: <input type="text" name="email" value="<%=params[:email]%>"/></p>
   <p>Password: <input type="text" name="password_digest"/></p>
   <input type="submit" value="Log In"/>
 </form>
+
