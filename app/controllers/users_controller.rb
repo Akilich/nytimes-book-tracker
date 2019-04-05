@@ -6,12 +6,11 @@ class UsersController < ApplicationController
       end
     
     get '/user_books' do
-        @users = Users.all
-        erb :'/users/index' 
+        @books = Book.all
+        erb :'/books/index' 
     end
     
-    post '/user_books' do 
-      #binding.pry
+    post '/user_books' do
       @user = User.create(params[:user])
       if !params["book"]["title"].empty?
         @user.books << Book.create(title: params["book"]["title"])

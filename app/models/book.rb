@@ -1,4 +1,5 @@
 require 'json'
+require './api.rb'
 
 class Book < ActiveRecord::Base
     belongs_to :user
@@ -24,7 +25,7 @@ class Book < ActiveRecord::Base
     end
    
     def self.create_from_api
-        api = Book::Api.new
+        api = Book.new
         results = api.get_books.map do |title_hash|
           self.new(title_hash).save
         end
