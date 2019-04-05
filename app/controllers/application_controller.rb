@@ -1,6 +1,7 @@
 require './config/environment'
 require './app/models/user'
 require 'pry'
+require 'sinatra/flash'
 #!/usr/bin/ruby
 class ApplicationController < Sinatra::Base
   
@@ -8,7 +9,8 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, ENV['SESSION_SECRET']
+    register Sinatra::Flash
+    set :session_secret, ENV['SESSION_SECRET'], :expire_after => 600
   end
 
   get '/' do
@@ -31,18 +33,20 @@ class ApplicationController < Sinatra::Base
 	end
 
   post '/login' do
-    @user = User.find_by(username: params[:username], password_digest: params[:password_digest])
-    if @user
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password_digest])
       @user.save
       session[:user_id] = @user.id
+      redirect '/users/home'
+    else
+      flash.now[:failure] = 'Invalid email/password combination'
+      redirect '/login' 
     end
-		redirect '/users/home'
+    
   end
   
   get '/users/home' do
-    #if @user = Helpers.current_user(session)
     erb :'/users/home'
-    #end
   end
   
   get '/logout' do
@@ -50,4 +54,14 @@ class ApplicationController < Sinatra::Base
     redirect '/'
     erb :home
   end
+
+  helpers do
+		def logged_in?
+			!!session[:user_id]
+		end
+
+		def current_user
+			User.find(session[:user_id])
+		end
+	end
 end

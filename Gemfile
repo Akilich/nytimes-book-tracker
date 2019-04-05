@@ -14,8 +14,7 @@ gem 'tux'
 gem 'rack'
 gem 'session_secret_generator'
 gem 'dotenv'
-gem 'fabrication'
-gem 'faker'
+gem 'sinatra-flash'
 
 
 group :test do
