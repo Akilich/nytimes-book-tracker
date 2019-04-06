@@ -14,6 +14,8 @@ gem 'tux'
 gem 'rack'
 gem 'session_secret_generator'
 gem 'dotenv'
+gem 'faker'
+gem 'fabrication'
 gem 'json'
 
 
