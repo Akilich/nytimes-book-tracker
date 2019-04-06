@@ -3,7 +3,7 @@
 require './config/environment'
 require './app/models/user'
 require 'pry'
-require './flash.rb'
+require './app/flash.rb'
 
 class ApplicationController < Sinatra::Base
   

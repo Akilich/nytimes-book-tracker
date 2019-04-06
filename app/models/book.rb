@@ -1,7 +1,7 @@
 require 'json'
-require_relative './api.rb'
+require './app/api.rb'
 
-class Book::BookApi < ActiveRecord::Base
+class Book < ActiveRecord::Base
     belongs_to :user
     
     attr_accessor :title, :description, :author, :rank
@@ -41,6 +41,5 @@ class Book::BookApi < ActiveRecord::Base
         @books.each.with_index do |film, i|
           puts "#{i+1}. #{book.title}"
         end
-    end   
-    
+    end    
 end
