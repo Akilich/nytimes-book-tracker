@@ -35,11 +35,4 @@ class Book < ActiveRecord::Base
         @@all << self
         self
     end
-    
-    def list_all_book_titles
-        @books = Book.all
-        @books.each.with_index do |film, i|
-          puts "#{i+1}. #{book.title}"
-        end
-    end    
 end
