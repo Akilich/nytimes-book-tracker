@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     
     get '/user_books' do
         @books = Book.all
-        erb :'/books/index' 
+        erb :'/users/user_books/index' 
     end
     
     post '/user_books' do

@@ -14,6 +14,7 @@ gem 'tux'
 gem 'rack'
 gem 'session_secret_generator'
 gem 'dotenv'
+gem 'json'
 
 
 group :test do
