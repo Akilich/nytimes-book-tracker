@@ -1,7 +1,7 @@
 require 'json'
-require './api.rb'
+require_relative './api.rb'
 
-class Book < ActiveRecord::Base
+class Book::BookApi < ActiveRecord::Base
     belongs_to :user
     
     attr_accessor :title, :description, :author, :rank
@@ -20,12 +20,12 @@ class Book < ActiveRecord::Base
         title_hash.each do |method,arg|  
         if self.respond_to?("#{method}=") 
             self.send("#{method}=",arg) 
-        end   
-        end
+        end 
+      end  
     end
    
     def self.create_from_api
-        api = Book.new
+        api = BookApi.new
         results = api.get_books.map do |title_hash|
           self.new(title_hash).save
         end

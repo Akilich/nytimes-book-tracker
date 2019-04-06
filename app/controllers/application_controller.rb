@@ -43,9 +43,7 @@ class ApplicationController < Sinatra::Base
       flash.message = 'Invalid email/password combination'
       redirect '/login' 
     end
-    
   end
-  
   
   get '/logout' do
     session.clear
