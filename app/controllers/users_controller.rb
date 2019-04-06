@@ -6,24 +6,27 @@ class UsersController < ApplicationController
       end
     
     get '/user_books' do
-        erb :'/users/user_books/index' 
+      @books = Book.all
+      erb :'/users/user_books/index' 
     end
-    
+
     get '/user_books/new' do
       erb :'/users/user_books/new'
+    end
+
+    post '/user_books' do
+      @book = Book.create(params[:title])
+      if !params["book"]["title"].empty?
+        @user.books << Book.create(title: params["book"]["title"])
+      end
+      redirect "users/#{@user.id}"
     end
 
     get '/user_books/edit' do
       erb :'/users/user_books/edit'
     end
 
-    post '/user_books' do
-      @user = User.create(params[:user])
-      if !params["book"]["title"].empty?
-        @user.books << Book.create(title: params["book"]["title"])
-      end
-      redirect "users/#{@user.id}"
-    end
+    
     
     get '/users/:id/edit' do
         @user = User.find(params[:id])

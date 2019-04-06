@@ -1,8 +1,8 @@
-<body>
- <%=current_user.username%>, here is a complete list of your books. 
 
-<%@books.each do |book|%>
-  <p><%=book.title%>,<%=book.author%>,<%=book.rank%></p>
-  <a href='/books/<%=book.id%>'>/books/<%=book.id%></a>
-<%end%>
-</body>
+ <h3>Complete list of your books</h3>
+ 
+ <%=@books%>
+
+ <%@books.each do |book|%>
+  <p><%=book.title%></p> 
+ <%end%>
