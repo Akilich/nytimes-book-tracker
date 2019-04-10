@@ -5,7 +5,7 @@ require 'json'
 require 'rest-client'
 
 class Book < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :users
 
   def self.get_books
     data = open("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=RCGJYGTSwDbhvImLxnJ6VO1HyGNixAjm").read
@@ -26,11 +26,16 @@ class Book < ActiveRecord::Base
   end
     
     #Iterating through each result/book of the NYT
-    def initialize(book_info_hash)
-      book_info_hash.each do |method,arg|  
-        if self.respond_to?("#{method}=") 
-          self.send("#{method}=",arg) 
-        end   
+    def book_info_hash 
+        Book.new do |key|
+        key.title = book["title"]
+        key.author = book["author"]
+        key.description = book["description"]
+        key.rank = book["rank"]
+      #book_info_hash.each do |method,arg|  
+      #  if self.respond_to?("#{method}=") 
+      #    self.send("#{method}=",arg) 
+        #end   
       end
     end
     
