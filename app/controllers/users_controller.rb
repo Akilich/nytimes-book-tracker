@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       end
     
     get '/user_books' do
-      @books = Book.all
+      @book = Book.all
       erb :'/users/user_books/index' 
       end
 
