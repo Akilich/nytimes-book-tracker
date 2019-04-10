@@ -1,3 +1,5 @@
+require_relative ./app/book_api.rb
+
 class Book < ActiveRecord::Base
     belongs_to :user
 
@@ -19,7 +21,7 @@ class Book < ActiveRecord::Base
     
     #Creating a new book in my database and assigning it's properties
     def self.create_new_book
-      books = BestsellerBooks::BookApi.new do |key|
+      books = BookApi.new do |key|
       key.title = book["title"]
       key.author = book["author"]
       key.description = book["description"]

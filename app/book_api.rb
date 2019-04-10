@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 require 'json'
 
-class BestsellerBooks::BookApi
+class BookApi < ActiveRecord::Base
 
     nyt_url = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key="
     nyt_api_key = RCGJYGTSwDbhvImLxnJ6VO1HyGNixAjm
