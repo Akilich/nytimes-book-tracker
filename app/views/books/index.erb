@@ -3,7 +3,7 @@
 <body>
  <%=@books%> 
 
-<%@books.each do |book|%>
-  <p><%=book.title%></p>
+<%@books.each do |book, i|%>
+  <p><%#{i+1}%>.<%=book.title%></p>
 <%end%>
 </body> 

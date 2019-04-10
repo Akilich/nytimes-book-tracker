@@ -1,6 +1,7 @@
 require 'nokogiri'
 require 'open-uri'
 require 'json'
+require 'rest-client'
 
 class BookApi < ActiveRecord::Base
 
