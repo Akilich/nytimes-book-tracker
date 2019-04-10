@@ -26,17 +26,17 @@ class UsersController < ApplicationController
       redirect "users/#{@book.title}"
     end
 
-    get 'users/#{@book.title}' do
+    get '/user_books/:title' do
     @book = Book.find(params[:title])
       erb :'/users/user_books/show'
     end
 
-    get 'users/#{@book.title}/edit' do
+    get '/user_books/:title/edit' do
       @book = Book.find(params[:title])
       erb :'/users/user_books/edit'
     end
 
-    patch 'users/#{@book.title}' do
+    patch '/user_books/:title' do
       @book = Book.find(params[:title])
       @user = User.find_by_id(params[:id])
       @username = params[:username]
