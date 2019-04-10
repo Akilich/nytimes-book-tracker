@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<head><p><h2>Welcome <%=current_user.username%>,</h2></p>
-<p><center><h3>- Your NY Times Bestseller Dashboard -</h3></center></p>
+<head>
+<p><center><h2>- Your NY Times Bestseller Dashboard -</h2></center></p>
 </head>
-
 <body>
-<p>
+<p><h3>Welcome <%=current_user.username%>,</h3></p>
+<h3>Your books</h3>
+ 
+<%=@book%>
+<%@book.each do |book|%>
+ <p><%=book.title%></p> 
+<%end%>
+
 <center>
-<a href="/user_books">View Your Books</a>
 <a href="/user_books/new">Add Book</a>
 <a href="/user_books/edit">Edit Books</a>
+<a href="/users/:id/edit">Edit Account</a>
+<a href="/logout">Log Out</a>
 </center>
-
-<p><a href="/logout">Log Out</a></p>
 </body>
 <html>
 

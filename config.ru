@@ -6,8 +6,6 @@ require_relative 'app/controllers/books_controller'
 require_relative 'app/controllers/users_controller'
 Dotenv.load
 
-
-
 if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
