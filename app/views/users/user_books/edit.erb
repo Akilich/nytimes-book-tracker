@@ -1,1 +1,17 @@
-<h3>Update Your Book</h3>
+<h2>Update Your Book</h2>
+
+<form method="post" action="/users/<%=@book.title%>">
+<label for="book_title">
+  <input type="text" name="book[title]" id ="book_title"> </input>
+  <label for="book_author">
+  <input type="text" name="book[author]" id ="book_author"> </input>
+  <label for="book_description">
+  <input type="text" name="book[description]" id ="book_description"> </input>
+  <label for="book_rank">
+  <input type="text" name="book[rank]" id ="book_rank"> </input>
+  
+  <label>Have your read this book?</label>
+    <input type="checkbox" name="book[user_id]" id="<%=user.id%>" value="<%=user.id%>"><%=user.name%></input>
+    
+    <input type="submit" value="Update">
+  </form>

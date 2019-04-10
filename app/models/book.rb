@@ -32,12 +32,12 @@ class Book < ActiveRecord::Base
   end
     
     #finding existing books
-  def find_book
-    existing_book = Book.find_by(title: book["title"])
-    if !params book["title"].empty?
-    self.create_from_api
-    end
-  end
+  #def find_book
+  #  existing_book = Book.find_by(title: book["title"])
+  #  if !params book["title"].empty?
+  #  self.create_from_api
+  #  end
+  #end
 
   def save
     @@all << self
