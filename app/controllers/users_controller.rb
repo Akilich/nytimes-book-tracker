@@ -7,13 +7,6 @@ class UsersController < ApplicationController
     
     get '/user_books' do
       @books = Book.all
-
-      def book_info(book)
-        puts " Title: " "#{book.title}"
-        puts " Author:"  " #{book.author}"
-        puts " Description:"  " #{book.description}"
-        puts " Rank:"  " #{book.rank}"
-      end
       erb :'/users/user_books/index' 
       end
 
