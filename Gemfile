@@ -15,6 +15,7 @@ gem 'rack'
 gem 'session_secret_generator'
 gem 'dotenv'
 gem 'json'
+gem 'rest-client', '~> 1.8'
 
 
 group :test do
