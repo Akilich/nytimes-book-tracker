@@ -6,24 +6,32 @@ class Book < ActiveRecord::Base
     
     def self.all
       if @@all.empty?
-        create_from_api
+        create_new_book
       else 
         @@all
       end
     end
     
-    def initialize(title_hash)
-      title_hash.each do |method,arg|  
-        if self.respond_to?("#{method}=") 
-          self.send("#{method}=",arg) 
-        end   
-      end
+    #Iterating through each result/book of the NYT
+    def initialize(data)
+      data["results"].each do |book, index|
     end
-     
-    def self.create_from_api
-      api = BestsellerBooks::BookApi.new
-      results = api.get_films.map do |title_hash|
-        self.new(title_hash).save
+    
+    #Creating a new book in my database and assigning it's properties
+    def self.create_new_book
+      books = BestsellerBooks::BookApi.new do |key|
+      key.title = book["title"]
+      key.author = book["author"]
+      key.description = book["description"]
+      key.rank = book["rank"]
+      self.new_book.save
+    end
+    
+    #finding existing books
+    def find_book
+      existing_book = Book.find_by(title: book["title"])
+      if !params book["title"].empty?
+      self.create_new_book
       end
     end
     
