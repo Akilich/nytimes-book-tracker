@@ -1,4 +1,6 @@
-require 'rest-client'
+require 'nokogiri'
+require 'open-uri'
+require 'json'
 
 class BestsellerBooks::BookApi
 
