@@ -1,8 +1,9 @@
-<h1>Update User Account</h1>
-<form action="/users/<%=@user.id%>" method="POST">
+<h3>Update User Account</h3>
+<form action="/users/home" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
-<label> Username: </label>
+  <p><label for="book_title">New Username:</label>
+  <input type="text" name="username" id ="user_id"> </input></p>
 
 <input="text" name="username" id="user_name" value="<%=@username%>">
   <input type="submit" value="Update My Usename">
