@@ -1,15 +1,8 @@
 class UsersController < ApplicationController
 
     get '/users/home' do
-        @user = User.find_by(username: params[:username])
-        @books = Book.all
         erb :'/users/home'
       end
-    
-   # get '/user_books' do
-   #   @book = Book.all
-    #  erb :'/users/user_books/index' 
-    #  end
 
     get '/user_books/new' do
       erb :'/users/user_books/new'

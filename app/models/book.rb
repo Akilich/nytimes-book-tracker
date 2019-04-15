@@ -1,13 +1,10 @@
-require 'nokogiri'
-require 'open-uri'
-require 'json'
-
 class Book < ActiveRecord::Base
   belongs_to :users
 
-  def self.import
-    data = open("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=RCGJYGTSwDbhvImLxnJ6VO1HyGNixAjm").read
-    @results = JSON.parse(data)
-    @book_information = @results['title']['author']['description']['rank']
+  def create_book_from_api
+    api = BookApi::Book.new
+    @book_information = api.get_books.map do |['title']['author']['description']['rank']|
+      self.new('title','author','description','rank').save
+    end
   end
 end
