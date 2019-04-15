@@ -1,9 +1,8 @@
-
 class UsersController < ApplicationController
 
     get '/users/home' do
         @user = User.find_by(username: params[:username])
-        @book = Book.all
+        @books = Book.all
         erb :'/users/home'
       end
     

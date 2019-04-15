@@ -1,1 +1,3 @@
 *.sqlite3
+#Ignore .env file
+/.env

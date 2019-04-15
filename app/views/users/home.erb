@@ -2,23 +2,22 @@
 <html>
 <head>
 <head>
-<p><center><h2>- Your NY Times Bestseller Dashboard -</h2></center></p>
+<p><center><h2>- Your Dashboard -</h2></center></p>
 </head>
 <body>
-<p><h3>Welcome <%=current_user.username%>,</h3></p>
-<h3>Your books</h3>
- 
-<%=@book%>
-<%@book.each do |book|%>
- <p><%=book.title%></p> 
-<%end%>
-
-<center>
-<a href="/user_books/new">Add Book</a>
+<h3>Welcome <%=current_user.username%>,</h3> <a href="/user_books/new">Add Book</a>
 <a href="/user_books/edit">Edit Books</a>
 <a href="/users/:id/edit">Edit Account</a>
 <a href="/logout">Log Out</a>
-</center>
+
+<p><h3>NY Times Bestseller Hardcover Fiction</h3></p>
+ 
+<%=@books%>
+
+<%@books.each.with_index do |book, index|%>
+    <%index%><%=book.title%>
+<%end%>
+
 </body>
 <html>
 

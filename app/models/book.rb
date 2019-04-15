@@ -1,4 +1,3 @@
-#require_relative ./app/book_api.rb
 require 'nokogiri'
 require 'open-uri'
 require 'json'
@@ -9,6 +8,6 @@ class Book < ActiveRecord::Base
   def self.import
     data = open("https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=RCGJYGTSwDbhvImLxnJ6VO1HyGNixAjm").read
     @results = JSON.parse(data)
-    binding.pry
+    @book_information = @results['title']['author']['description']['rank']
   end
 end

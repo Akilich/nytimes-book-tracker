@@ -1,6 +1,6 @@
 ## What is NY Times Book Tracker
 
-This gem was created for a Sinatra project. The purpose of this app is to create a NY Times bestseller database that allows users to create an account, search for books, save them to their account, and mark whether they have read them. Users can also update the book information in their account and delete a book from their account. Only users who are signed up have access to this database and can add, edit, delete books from their account.  
+This gem was created for a Sinatra project. The purpose of this app is to create a NY Times bestseller database that allows users to create an account and add books from the NY Times list to their account. Users can also update the book information in their account and delete a book from their account. Only users who are signed up have access to this database and can add, edit, delete books from their account.  
 
 ## Installation
 ```gem nytimes-book-tracker```
