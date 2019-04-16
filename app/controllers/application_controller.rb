@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     if params[:username].empty? || params[:password].empty? 
       redirect '/signup'
     else
-    User.create(username: params[:username], email: params[:email], password_digest: params[:password_digest])
+    User.create(username: params[:username], email: params[:email], password: params[:password])
       redirect '/login'
     end
   end
@@ -30,8 +30,8 @@ class ApplicationController < Sinatra::Base
 
   post '/login' do
     @user = User.find_by(email: params[:email])
-    if @user && @user.authenticate(params[:password_digest])
-			session[:user_id] = user.id
+    if @user && @user.authenticate(params[:password])
+			session[:user_id] = @user.id
       redirect '/users/home'
     else
       flash.message = 'Invalid email/password combination'
