@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     get '/users/home' do
-      @books = Book.list_books
+    @ny_times_list = Book.list_books
         erb :'/users/home'
       end
 
