@@ -22,10 +22,10 @@ class Book < ActiveRecord::Base
   def self.list_books
     @books = self.all
     @books.each.with_index do |book, i|
-      "#{i+1}. 'Title:'#{book.title}, 
-      'Author:'#{book.author} 
-      'Description:'#{book.description}
-      'Rank:' #{book.rank}"
+      "#{i+1}. Title: #{book.title}, 
+      Author:#{book.author} 
+      Description: #{book.description}
+      Rank: #{book.rank}"
     end
     #binding.pry
   end

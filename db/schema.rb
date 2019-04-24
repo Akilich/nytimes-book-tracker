@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 20190402104157) do
 
   create_table "books", force: :cascade do |t|
-    t.string "author"
-    t.string "title"
-    t.string "description"
-    t.string "rank"
+    t.string "Author"
+    t.string "Title"
+    t.string "Description"
+    t.string "Rank"
   end
 
   create_table "user_books", force: :cascade do |t|

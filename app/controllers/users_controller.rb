@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
 
     get '/users/home' do
-      Book.import
-      @books = Book.all
+      @books = Book.list_books
         erb :'/users/home'
       end
 
