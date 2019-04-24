@@ -1,3 +1,6 @@
+require 'dotenv'
+Dotenv.load('session.env')
+
 ENV['SINATRA_ENV'] ||= "development"
 
 require 'bundler/setup'
