@@ -10,24 +10,28 @@ class UsersController < ApplicationController
     end
 
     post '/user_books' do
-    @book = Book.all
+      @book = Book.find_by(params[:title])
+      @book.update(title: params[:title])
+    if params[:title].empty?
+      @userbook = Book.create(params[:id],params[:title],params[:author],params[:description],params[:rank],params[:read])
+    end
+      @book.save
       redirect "/users/user_books/:id"
     end
 
     get '/users/user_books/:id' do
-      @book = Book.create(params["book"])
-      @book.save
+      @books = UserBooks.user_list
       erb :'/users/user_books/show'
     end
 
     get '/users/user_books/:id/edit' do
-      @book = Book.find(params[:title])
+      @book = Book.find(params["title"])
       erb :'/users/user_books/edit'
     end
 
     patch '/users/user_books/:id' do
-      @book = Book.find_by_id(params[:id])
-      @user = User.find_by_id(params[:id])
+      @book = Book.find_by_id(params[:title])
+      @user = User.find_by_id(params[:username])
       @username = params[:username]
       @book.save
       redirect "/user_books"
@@ -55,9 +59,8 @@ class UsersController < ApplicationController
     end
 
     patch '/users/:id' do 
-        @user = User.find_by(username: params[:username])
-        @username = (params[:username])
-        @user.save
+      User.update(username: params[:username])
+      @user = User.find_by(username: params[:username])
         redirect "users/home"
     end
 end

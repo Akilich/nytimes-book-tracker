@@ -6,13 +6,12 @@
 </head>
 <body>
 <h3>Welcome <%=current_user.username%>,</h3> 
-<a href="/users/:id/edit">Edit Account</a>
-<a href="/logout">Log Out</a>
+<a href="/users/:id/edit">Edit Account</a> &nbsp; <a href="/logout">Log Out</a>
 
 <p><h3>NY Times Bestseller Hardcover Fiction</h3></p>
  
 <p><%=@ny_times_list%><p/>
-<p><a href="/user_books/new">Add Book</a></p>
+<a href="/user_books/new">Add Book</a>
 </body>
 <html>
 
