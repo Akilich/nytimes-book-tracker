@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
 
     get '/users/home' do
-    @ny_times_list = Book.list_books
-        erb :'/users/home'
-      end
+      @ny_times_list = Book.all
+      erb :'/users/home'
+    end
 
     get '/user_books/new' do
       erb :'/users/user_books/new'
