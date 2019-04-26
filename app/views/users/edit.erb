@@ -1,10 +1,15 @@
-<h3>Update User Account</h3>
-<form action="/users/home" method="POST">
+<h3>Update My Account</h3>
+<p><form action="/users/home" method="POST">
   <input id="hidden" type="hidden" name="_method" value="patch">
 
-  <p><label for="book_title">New Username:</label>
-  <input type="text" name="username" id ="user_id"> </input></p>
+  <p><label for="update_username">New Username:</label>
+  <input type="text" name="username" id ="user_id" value="<%=@username%>"> </input></p>
 
-<input="text" name="username" id="user_name" value="<%=@username%>">
-  <input type="submit" value="Update My Usename">
-</form>
+  <p><label for="update_user_email">New Email:</label>
+  <input type="text" name="email" id ="user_id"> </input></p>
+
+  <p><label for="update_user_password">New Password:</label>
+  <input type="text" name="password" id ="user_id"> </input></p>
+
+  <input type="submit" value="Update Account">
+</form></p>

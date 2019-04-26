@@ -59,7 +59,7 @@ class UsersController < ApplicationController
     end
 
     patch '/users/:id' do 
-      User.update(username: params[:username])
+      User.update(username: params[:username], email: params[:email], password: params[:password])
       @user = User.find_by(username: params[:username])
         redirect "users/home"
     end
