@@ -1,4 +1,4 @@
-class BooksController < ApplicationController
+class UserBooksController < ApplicationController
   get '/user_books/new' do
     erb :'/users/user_books/new'
   end
