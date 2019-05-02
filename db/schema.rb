@@ -25,12 +25,16 @@ ActiveRecord::Schema.define(version: 20190426202404) do
     t.integer "user_id"
     t.integer "book_id"
     t.string "rating"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "email"
     t.string "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

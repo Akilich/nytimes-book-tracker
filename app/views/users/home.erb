@@ -5,8 +5,9 @@
 <p><center><h2>- Your Dashboard -</h2></center></p>
 </head>
 <body>
+<%= flash.message %>
 <h3>Welcome <%=current_user.username%>,</h3> 
-<a href="/users/:id/edit">Edit Account</a> &nbsp; <a href="/logout">Log Out</a>
+<a href="/users/edit">Edit Account</a> &nbsp; <a href="/logout">Log Out</a>
 
 <p><h3>NY Times Bestseller Hardcover Fiction</h3></p>
  
