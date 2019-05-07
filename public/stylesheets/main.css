@@ -12,6 +12,14 @@
   }
 
   /* --- Welcome Page Styles --- */
+
+  .scroll-box {
+    background: #f4f4f4;
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    height: 400px; /* maximum height of the box, feel free to change this! */
+    padding: 15px;
+    overflow-y: scroll;
+}
   body {
     background-color: #b4b4c2;
     color: #333;

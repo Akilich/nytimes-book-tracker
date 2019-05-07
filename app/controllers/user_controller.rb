@@ -17,18 +17,16 @@ class UsersController < ApplicationController
     end
   end
 
-  get '/users/:id' do
-    @current_user ||= User.find_by(id: session[:user_id])
-  end
-
-  patch '/users/:id' do 
-    @user = User.find_by(id: session[:user_id])
-    if @user.update(username: params[:username], email: params[:email], password: params[:password])
-    flash.message = "Account updated"
-    redirect "users/home"
+  patch '/users/home' do 
+    @user = current_user
+    @user.update(username: params[:username], email: params[:email], password: params[:password])
+    @user.save
+    if @user
+      flash.message = "Account updated!"
+      redirect "users/home"
     else
-    flash.message = "Failed to update. Please try again"
-    redirect "users/edit"
+      flash.message = "Failed to update. Please try again"
+      redirect "users/edit"
     end
   end
 

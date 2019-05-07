@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<head>
 <p><center><h2>- Your Dashboard -</h2></center></p>
-</head>
-<body>
+
 <%= flash.message %>
-<h3>Welcome <%=current_user.username%>,</h3> 
+<p><h3>Welcome <%=current_user.username%>,</h3></p> 
 <a href="/users/edit">Edit Account</a> &nbsp; <a href="/logout">Log Out</a>
 
 <p><h3>NY Times Bestseller Hardcover Fiction</h3></p>
- 
+
+<div style="width:500px; height:300px;line-height:1.5em; overflow:auto; padding:5px;">
 <%@ny_times_list.each.with_index do |book, i|%>
     <p><%= "#{i+1}. " "#{book.title}"%>
     <br><%= "Author: " "#{book.author}"%>
     <br><%= "Description: " "#{book.description}"%>
     <br><%= "Rank: " "#{book.rank}"%></p>
-<%end%>
-
-
+<%end%> 
+</div>
 
 <a href="/user_books/new">Add Book</a>
-</body>
-<html>
+
 
 
 
