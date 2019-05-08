@@ -1,16 +1,18 @@
-<h2>Add a new Book to your List</h2>
+<h2>Add this Book to your List</h2>
+<% @selected_book do %>
+    <p><%="#{book.title}"%> 
+<%end%>
 
-<form method="post" action="/user_books">
-<p><label for="book_title">Title:</label>
-<input type="text" name="book[title]" id ="book_title"> </input></p>
-<p><label for="book_author">Author:</label>
-<input type="text" name="book[author]" id ="book_author"> </input></p>
-<p><label for="book_description">Description:</label>
-<input type="text" name="book[description]" id ="book_description"> </input></p>
-<p><label for="book_rank">Rank:</label>
-<input type="text" name="book[rank]" id ="book_rank"> </input></p>
+<form name="new_user_book" action="/users/user_books/show" method="POST">
+  <input id="book_id" type="hidden"></input>
   
-<label>Check if you have read this book</label>
-<br><input type="checkbox" name="book[title]" value="/user_books">Read?<br><p>  
-<p><input type="submit" value="Create Book"></p>
-</form>
+  
+<p><label for="review">Your Book Rating:</label></p>
+  <p><input type="text" name="rating" id ="rating_id"> </input></p>
+
+  <p><label for="review">Your Book Review:</label></p> 
+  <p><textarea rows="4" cols="50" name="book_review" form="new_user_book" id ="book_review_id"> Write review here</textarea>
+  </input></p>
+
+  <input type="submit" value="Add Book">
+</form></p>

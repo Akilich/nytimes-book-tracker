@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   get '/user_books/new' do
+    @selected_book = Book.find_by(params[:book_id])
     erb :'/users/user_books/new'
   end
 

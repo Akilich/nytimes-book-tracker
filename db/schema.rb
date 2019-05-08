@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20190426202404) do
     t.integer "user_id"
     t.integer "book_id"
     t.string "rating"
+    t.text "book_review"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
