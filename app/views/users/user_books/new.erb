@@ -1,17 +1,14 @@
 <h2>Add this Book to your List</h2>
-<% @selected_book do %>
-    <p><%="#{book.title}"%> 
-<%end%>
 
-<form name="new_user_book" action="/users/user_books/show" method="POST">
-  <input id="book_id" type="hidden"></input>
-  
-  
-<p><label for="review">Your Book Rating:</label></p>
-  <p><input type="text" name="rating" id ="rating_id"> </input></p>
+<form name="new_user_book" action="/users/user_books" method="post">
 
-  <p><label for="review">Your Book Review:</label></p> 
-  <p><textarea rows="4" cols="50" name="book_review" form="new_user_book" id ="book_review_id"> Write review here</textarea>
+<input type="hidden" name="book_id" value="<%=@book_id%>">
+  
+<p><label for="rating">Your Book Rating:</label></p>
+  <p><input type="text" name="rating"> </input></p>
+
+  <p><label for="book_review">Your Book Review:</label></p> 
+  <p><textarea rows="4" cols="50" name="book_review"> Write review here</textarea>
   </input></p>
 
   <input type="submit" value="Add Book">

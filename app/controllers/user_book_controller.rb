@@ -1,44 +1,79 @@
 class BooksController < ApplicationController
-  get '/user_books/new' do
-    @selected_book = Book.find_by(params[:book_id])
+  
+  get '/users/user_books' do
+    if logged_in? && current_user
+      @user_books = UserBook.all
+      @current_user ||= User.find_by(id: session[:user_id])
+      erb :'/users/user_books/index'
+    else
+      redirect '/login'
+    end
+  end
+  
+  get '/users/user_books/new' do
+    if logged_in?
+      @book = UserBook.find_by(params[:book_id])
     erb :'/users/user_books/new'
+    else redirect '/login'
+    end
   end
 
-  post '/user_books' do
-    @book = Book.find_by(params[:title])
-    @book.update(title: params[:title])
-  if params[:title].empty?
-    @userbook = Book.create(params[:id],params[:title],params[:author],params[:description],params[:rank],params[:read])
-  end
-    @book.save
-    redirect "/users/user_books/:id"
-  end
-
-  get '/users/user_books/:id' do
-    @books = UserBooks.user_list
-    erb :'/users/user_books/show'
+  post '/users/user_books' do
+    if logged_in? && !params[:rating].empty?
+      @user_books = UserBook.create(user_id: session[:user_id], book_id: params[:book_id], rating: params[:rating], book_review: params[:book_review])
+      @user_books.save
+      redirect "/users/user_books"
+    else
+      redirect '/users/home'
+    end
   end
 
-  get '/users/user_books/:id/edit' do
-    @book = Book.find(params["title"])
-    erb :'/users/user_books/edit'
+  get 'users/user_books/:book_id' do 
+    @user_books = UserBook.find_by(params[:book_id])
+    if logged_in?
+      erb :'/users/user_books/show'
+    else
+      redirect '/login'
+    end
   end
 
-  patch '/users/user_books/:id' do
-    @book = Book.find_by_id(params[:title])
-    @user = User.find_by_id(params[:username])
-    @username = params[:username]
-    @book.save
-    redirect "/user_books"
+  get '/users/user_books/:book_id/edit' do
+    if logged_in?
+      @user_book = UserBook.find_by(user_id: session[:user_id], book_id: params[:book_id], rating: params[:rating], book_review: params[:book_review])
+     erb :'/users/user_books/edit'
+    else 
+      redirect '/login'
+    end
+  end
+
+  patch '/users/user_books/:book_id' do
+    @user_books = UserBook.find_by(user_id: session[:user_id], book_id: params[:book_id], rating: params[:rating], book_review: params[:book_review])
+    @user_books.update(rating: params[:rating], book_review: params[:book_review])
+    @user_books.save
+    redirect to "/users/user_books"
   end
 
   delete '/users/user_books/:id/delete' do
     if logged_in?
-      @book = Book.find_by_id(params[:id])
-        if @book && current_user
-            @book.destroy
+      @user_books = UserBook.find_by(book_id: params[:book_id])
+        if @user_books && current_user
+          @user_books.destroy
         end
       redirect to '/users/home'
       end
-  end 
+  end
+  
+  helpers do
+    def flash
+      @flash ||= FlashMessage.new(session)
+    end
+  
+    def logged_in?
+      !!session[:user_id]
+    end
+  
+    def current_user
+      User.find(session[:user_id])
+    end
+  end
 end

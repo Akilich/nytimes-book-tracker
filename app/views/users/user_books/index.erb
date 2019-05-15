@@ -1,10 +1,12 @@
 
- <h3>Complete list of your books</h3>
+ <h3>Your Book List</h3>
  
- <%=@book%>
+ <div style="width:500px; height:300px;line-height:1.5em; overflow:auto; padding:5px;">
+<%@user_books.each.with_index do |book, i|%>
+    <p><%= "#{i+1}. " "#{@user_books}"%>
+   
+    <br><a href="/users/user_books/:book_id/edit"><button>Edit Book</button></a></p>
+<%end%> 
+</div>
 
- <%@book.each do |book|%>
-  <p><%=book.title%></p> 
- <%end%>
-
- <a href="/user_books/edit">Edit Books</a>
+ 
