@@ -1,5 +1,10 @@
 
  Book Information
- <%= @book %>
+ <%@user_book %> do |user_book| %>
+    do |book, i|%>
+        <p><%= "#{i+1}. " %>
+        <br><%= "Rating: " "#{user_book.rating}"%>
+        <br><%= "Review: " "#{user_book.review}"%>
+<%end%>
 
-<a href="/users/user_books/:book)_id/edit"><button>Edit Book</button></a>
+<a href="/users/user_books/:book_id/edit"><button>Edit Book</button></a>
