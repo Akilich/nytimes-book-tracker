@@ -3,9 +3,6 @@ class BooksController < ApplicationController
   get '/users/user_books' do
     if logged_in? && current_user
       @user_books = UserBook.all
-      @user_book_review = params[:review]
-      @user_book_rating = params[:rating]
-      @current_user ||= User.find_by(id: session[:user_id])
       erb :'/users/user_books/index'
     else
       redirect '/login'

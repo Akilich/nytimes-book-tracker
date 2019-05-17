@@ -21,14 +21,4 @@ class Book < ActiveRecord::Base
       book.save
     end
   end
-
-  def self.list_books
-    @books = self.all
-    @books.each.with_index do |book, i|
-      puts "#{i+1}. " "#{book.title}" 
-      puts "Author: " "#{book.author}"
-      puts "Description: " "#{book.description}"
-      puts "Rank: " "#{book.rank}"
-    end
-  end
 end
