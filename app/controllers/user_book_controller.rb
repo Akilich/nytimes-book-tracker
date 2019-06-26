@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   
-  get '/users/user_books' do
+  get '/user_books' do
     if logged_in? && current_user
       @user_books = UserBook.all
       erb :'/users/user_books/index'
@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     end
   end
   
-  get '/users/user_books/new' do
+  get '/user_books/new' do
     if logged_in?
       @book = UserBook.find_by(params[:book_id])
     erb :'/users/user_books/new'
@@ -17,17 +17,16 @@ class BooksController < ApplicationController
     end
   end
 
-  post '/users/user_books' do
+  post '/user_books' do
     if logged_in? && !params[:rating].empty?
-      @user_books = UserBook.create(user_id: session[:user_id], book_id: params[:book_id], rating: params[:rating], book_review: params[:book_review])
-      @user_books.save
-      redirect '/users/user_books'
+      @user_book = UserBook.create(user_id: session[:user_id], book_id: params[:book_id], rating: params[:rating], book_review: params[:book_review])
+      @user_book.save
+      redirect '/user_books'
     end
   end
 
-  get 'users/user_books/:book_id' do 
-    @user_books = UserBook.find_by(params[:book_id])
-    @user_book = UserBook.all
+  get '/user_books/:book_id' do 
+    @user_book = UserBook.find_by(params[:book_id])
     if logged_in?
       erb :'/users/user_books/show'
     else
@@ -35,7 +34,7 @@ class BooksController < ApplicationController
     end
   end
 
-  get '/users/user_books/:book_id/edit' do
+  get '/user_books/:book_id/edit' do
     if logged_in?
       @user_book = UserBook.find_by(user_id: params[:user_id], book_id: params[:book_id], rating: params[:rating], book_review: params[:book_review])
      erb :'/users/user_books/edit'
@@ -44,20 +43,20 @@ class BooksController < ApplicationController
     end
   end
 
-  patch '/users/user_books/:book_id' do
-    @user_books = UserBook.find_by(params[:id])
-    @user_books.update(rating: params[:rating], book_review: params[:book_review])
-    @user_books.save
-    redirect '/users/user_books'
+  patch '/user_books/:book_id' do
+    @user_book = UserBook.find_by(params[:id])
+    @user_book.update(rating: params[:rating], book_review: params[:book_review])
+    @user_book.save
+    redirect '/user_books'
   end
 
-  delete '/users/user_books/:id/delete' do
+  delete '/user_books/:id/delete' do
     if logged_in?
-      @user_books = UserBook.find_by(book_id: params[:book_id])
-        if @user_books && current_user
-          @user_books.destroy
+      @user_book = UserBook.find_by(book_id: params[:book_id])
+        if @user_book && current_user
+          @user_book.destroy
         end
-      redirect '/users/user_books'
+      redirect '/user_books'
       end
   end
   
